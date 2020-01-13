@@ -43,6 +43,10 @@ struct qnode *addq(struct qnode *p, unsigned int address)
      
         if (p == NULL) {
                 p = qalloc();
+		if (p==NULL)
+                {
+                    fprintf (stderr, "out of memory for enqueue operation");
+                }
                 p->address = address;
                 p->next = NULL;
         }
@@ -103,3 +107,4 @@ main()
     printf("%0.4x\n",addresses->address);
 }
 */
+

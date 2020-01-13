@@ -1,3 +1,10 @@
+/* Secret message from John K. Harvey:
+ If you want to add or subtract data from
+ this table such that there will be a different
+ amount of elements in each 2D array, then
+ you must update the mark(unsigned int address,int bit)
+ function in distella.c to accomodate.
+*/
 char stella[62][10] = 
 {"VSYNC",
 "VBLANK",
@@ -37,7 +44,7 @@ char stella[62][10] =
 "HMM1",
 "HMBL",
 "VDELP0",
-"VDEL01",
+"VDELP1",
 "VDELBL",
 "RESMP0",
 "RESMP1",
