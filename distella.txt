@@ -1,7 +1,7 @@
 
                                D i S t e l l a
 
-                                   v 3.01a
+                                   v 3.01b
 
                                  Created By
 
@@ -19,6 +19,10 @@
 
 Quick Docs:  Type DiStella at the command prompt.
 
+Differences from version 3.01b:
+ Bugs fixed:
+   -Crash when ABS_INDIRECT was encountered in some ROMs.
+   -Labels were incorrectly wrapped 2600 style on 7800 ROMs, at 0x0fff.
 
 Differences from version 3.00:
 

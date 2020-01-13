@@ -7,8 +7,8 @@ all:
 	echo "	osx-ub"; \
 	echo "	osx-intel";
 
-APP_VERSION="\"3.01a\""
-APP_COMPILE="\"March 4, 2013\""
+APP_VERSION="\"3.01b\""
+APP_COMPILE="\"August 26, 2016\""
 
 #CFLAGS=-O0 -w -DAPP_VERSION=$(APP_VERSION) -DAPP_COMPILE=$(APP_COMPILE)
 CFLAGS=-O0 -g -w -DAPP_VERSION=$(APP_VERSION) -DAPP_COMPILE=$(APP_COMPILE)

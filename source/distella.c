@@ -62,11 +62,11 @@ BYTE *mem = NULL;	/* copied data from the file-- can be from 2K-48K bytes in siz
 BYTE *labels = NULL;	/* array of information about addresses-- can be from 2K-48K bytes in size */
 BYTE *hdr78 = NULL;	/* Atari 7800 header block (128 bytes, if allocated) */
 
-BYTE reserved[64];
-BYTE ioresrvd[24];
-BYTE pokresvd[16];
-char orgmnc[16],linebuff[80],nextline[80];
+BYTE reserved[640];
+BYTE ioresrvd[240];
+BYTE pokresvd[160];
 FILE *cfg;
+char orgmnc[16],linebuff[80],nextline[80];
 
 unsigned long pc,pcbeg,pcend,offset,brk_adr,start_adr,isr_adr,k;
 int aflag,cflag,dflag,fflag,pflag,rflag,hflag,sflag,intflag,a78flag,bflag,kflag,lineno,charcnt,hdr_exists;
@@ -1174,7 +1174,7 @@ void disasm(unsigned long distart,int pass)
                     arg1=ad&255;
                     arg2=ad/256;
                     labfound = mark(ad,REFERENCED);
-                    if (pass == 3)
+                    if (pass == 3) {
                         if (ad < 0x100 && fflag) {
                             sprintf(linebuff,".ind ");
                             strcat(nextline,linebuff);
@@ -1185,7 +1185,7 @@ void disasm(unsigned long distart,int pass)
                         }
                         if (labfound == 1) {
                             sprintf(linebuff,"(L%04X)",ad);
-                            strcat(nextline,linebuff);
+                            strcat(nextline,linebuff); // REVENG: was overflowing "nextline" on PASS 1, with at least one rom. Added parenthesis to limit this block to PASS 3, which seemed to be the intent if the indentation is any indication.
                         }
                         else if (labfound == 3) {
 			    if (a78flag == 0)
@@ -1202,6 +1202,7 @@ void disasm(unsigned long distart,int pass)
                             sprintf(linebuff,"($%04X)",ad);
                             strcat(nextline,linebuff);
                         }
+                    }
                     break;
                 }
             }
