@@ -122,7 +122,7 @@ struct lookup_tag lookup[] = {
     /* 02 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE, 0, 0}, /* TILT */
     /* 03 */ {  ".SLO",  INDIRECT_X, M_INDX, M_INDX, 8, 0},
 
-    /* 04 */ {  ".NOOP", ZERO_PAGE, M_NONE, M_NONE, 3, 0},
+    /* 04 */ {  ".NOP", ZERO_PAGE, M_NONE, M_NONE, 3, 0},
 	/* 05 */ {	"ORA",	ZERO_PAGE, M_ZERO, M_AC, 3, 0},	/* Zeropage */
 	/* 06 */ {	"ASL",	ZERO_PAGE, M_ZERO, M_ZERO, 5, 0},	/* Zeropage */
     /* 07 */ {  ".SLO",  ZERO_PAGE, M_ZERO, M_ZERO, 5, 0},
@@ -132,7 +132,7 @@ struct lookup_tag lookup[] = {
 	/* 0a */ {	"ASL",	ACCUMULATOR, M_AC, M_AC, 2, 0},	/* Accumulator */
     /* 0b */ {  ".ANC",  IMMEDIATE, M_ACIM, M_ACNC, 2, 0},
 
-    /* 0c */ {  ".NOOP", ABSOLUTE, M_NONE, M_NONE, 4, 0},
+    /* 0c */ {  ".NOP", ABSOLUTE, M_NONE, M_NONE, 4, 0},
 	/* 0d */ {	"ORA",	ABSOLUTE, M_ABS, M_AC, 4, 0},	/* Absolute */
 	/* 0e */ {	"ASL",	ABSOLUTE, M_ABS, M_ABS, 6, 0},	/* Absolute */
     /* 0f */ {  ".SLO",  ABSOLUTE, M_ABS, M_ABS, 6, 0},
@@ -142,17 +142,17 @@ struct lookup_tag lookup[] = {
     /* 12 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE, 0, 0}, /* TILT */
     /* 13 */ {  ".SLO",  INDIRECT_Y, M_INDY, M_INDY, 8, 0},
 
-    /* 14 */ {  ".NOOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
+    /* 14 */ {  ".NOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
 	/* 15 */ {	"ORA",	ZERO_PAGE_X, M_ZERX, M_AC, 4, 0},	/* Zeropage,X */
 	/* 16 */ {	"ASL",	ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},/* Zeropage,X */
     /* 17 */ {  ".SLO",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},
 
 	/* 18 */ {	"CLC",	IMPLIED, M_NONE, M_FC, 2, 0},
 	/* 19 */ {	"ORA",	ABSOLUTE_Y, M_ABSY, M_AC, 4, 1},	/* Absolute,Y */
-    /* 1a */ {  ".NOOP", IMPLIED, M_NONE, M_NONE, 2, 0},
+    /* 1a */ {  ".NOP", IMPLIED, M_NONE, M_NONE, 2, 0},
     /* 1b */ {  ".SLO",  ABSOLUTE_Y, M_ABSY, M_ABSY, 7, 0},
 
-    /* 1c */ {  ".NOOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
+    /* 1c */ {  ".NOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
 	/* 1d */ {	"ORA",	ABSOLUTE_X, M_ABSX, M_AC,   4, 1},	/* Absolute,X */
 	/* 1e */ {	"ASL",	ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},	/* Absolute,X */
     /* 1f */ {  ".SLO",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},
@@ -182,17 +182,17 @@ struct lookup_tag lookup[] = {
     /* 32 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE, 0, 0}, /* TILT */
     /* 33 */ {  ".RLA",  INDIRECT_Y, M_INDY, M_INDY, 8, 0},
 
-    /* 34 */ {  ".NOOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
+    /* 34 */ {  ".NOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
 	/* 35 */ {	"AND",	ZERO_PAGE_X, M_ZERX, M_AC,   4, 0},	/* Zeropage,X */
     /* 36 */ {  "ROL",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},/* Zeropage,X */
     /* 37 */ {  ".RLA",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},
 
 	/* 38 */ {	"SEC",	IMPLIED, M_NONE, M_FC, 2, 0},
 	/* 39 */ {	"AND",	ABSOLUTE_Y, M_ABSY, M_AC, 4, 1},	/* Absolute,Y */
-    /* 3a */ {  ".NOOP", IMPLIED, M_NONE, M_NONE,  2, 0},
+    /* 3a */ {  ".NOP", IMPLIED, M_NONE, M_NONE,  2, 0},
     /* 3b */ {  ".RLA",  ABSOLUTE_Y, M_ABSY, M_ABSY, 7, 0},
 
-    /* 3c */ {  ".NOOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
+    /* 3c */ {  ".NOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
 	/* 3d */ {	"AND",	ABSOLUTE_X, M_ABSX, M_AC,   4, 1},	/* Absolute,X */
     /* 3e */ {  "ROL",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0}, /* Absolute,X */
     /* 3f */ {  ".RLA",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},
@@ -202,7 +202,7 @@ struct lookup_tag lookup[] = {
     /* 42 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE, 0, 0}, /* TILT */
     /* 43 */ {  ".SRE",  INDIRECT_X, M_INDX, M_INDX, 8, 0},
 
-    /* 44 */ {  ".NOOP", ZERO_PAGE, M_NONE, M_NONE, 3, 0},
+    /* 44 */ {  ".NOP", ZERO_PAGE, M_NONE, M_NONE, 3, 0},
 	/* 45 */ {	"EOR",	ZERO_PAGE, M_ZERO, M_AC,   3, 0},	/* Zeropage */
 	/* 46 */ {	"LSR",	ZERO_PAGE, M_ZERO, M_ZERO, 5, 0},	/* Zeropage */
     /* 47 */ {  ".SRE",  ZERO_PAGE, M_ZERO, M_ZERO, 5, 0},
@@ -222,17 +222,17 @@ struct lookup_tag lookup[] = {
     /* 52 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE,  0, 0},    /* TILT */
     /* 53 */ {  ".SRE",  INDIRECT_Y, M_INDY, M_INDY, 8, 0},
 
-    /* 54 */ {  ".NOOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
+    /* 54 */ {  ".NOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
 	/* 55 */ {	"EOR",	ZERO_PAGE_X, M_ZERX, M_AC,   4, 0},	/* Zeropage,X */
 	/* 56 */ {	"LSR",	ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},/* Zeropage,X */
     /* 57 */ {  ".SRE",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},
 
 	/* 58 */ {	"CLI",	IMPLIED, M_NONE, M_FI,     2, 0},
 	/* 59 */ {	"EOR",	ABSOLUTE_Y, M_ABSY, M_AC,  4, 1},	/* Absolute,Y */
-    /* 5a */ {  ".NOOP", IMPLIED, M_NONE, M_NONE,   2, 0},
+    /* 5a */ {  ".NOP", IMPLIED, M_NONE, M_NONE,   2, 0},
     /* 5b */ {  ".SRE",  ABSOLUTE_Y, M_ABSY, M_ABSY, 7, 0},
 
-    /* 5c */ {  ".NOOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
+    /* 5c */ {  ".NOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
 	/* 5d */ {	"EOR",	ABSOLUTE_X, M_ABSX, M_AC,   4, 1},	/* Absolute,X */
 	/* 5e */ {	"LSR",	ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},	/* Absolute,X */
     /* 5f */ {  ".SRE",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},
@@ -242,7 +242,7 @@ struct lookup_tag lookup[] = {
     /* 62 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE, 0, 0}, /* TILT */
     /* 63 */ {  ".RRA",  INDIRECT_X, M_INDX, M_INDX, 8, 0},
 
-    /* 64 */ {  ".NOOP", ZERO_PAGE, M_NONE, M_NONE, 3, 0},
+    /* 64 */ {  ".NOP", ZERO_PAGE, M_NONE, M_NONE, 3, 0},
 	/* 65 */ {	"ADC",	ZERO_PAGE, M_ZERO, M_AC,   3, 0},	/* Zeropage */
 	/* 66 */ {	"ROR",	ZERO_PAGE, M_ZERO, M_ZERO, 5, 0},	/* Zeropage */
     /* 67 */ {  ".RRA",  ZERO_PAGE, M_ZERO, M_ZERO, 5, 0},
@@ -262,26 +262,26 @@ struct lookup_tag lookup[] = {
     /* 72 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE,  0, 0}, /* TILT relative? */
     /* 73 */ {  ".RRA",  INDIRECT_Y, M_INDY, M_INDY, 8, 0},
 
-    /* 74 */ {  ".NOOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
+    /* 74 */ {  ".NOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
 	/* 75 */ {	"ADC",	ZERO_PAGE_X, M_ZERX, M_AC,   4, 0}, /* Zeropage,X */
 	/* 76 */ {	"ROR",	ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0}, /* Zeropage,X */
     /* 77 */ {  ".RRA",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},
 
 	/* 78 */ {	"SEI",	IMPLIED, M_NONE, M_FI, 2, 0},
 	/* 79 */ {	"ADC",	ABSOLUTE_Y, M_ABSY, M_AC, 4, 1},	/* Absolute,Y */
-    /* 7a */ {  ".NOOP", IMPLIED, M_NONE, M_NONE,  2, 0},
+    /* 7a */ {  ".NOP", IMPLIED, M_NONE, M_NONE,  2, 0},
     /* 7b */ {  ".RRA",  ABSOLUTE_Y, M_ABSY, M_ABSY, 7, 0},
 
-    /* 7c */ {  ".NOOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
+    /* 7c */ {  ".NOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
 	/* 7d */ {	"ADC",	ABSOLUTE_X, M_ABSX, M_AC,   4, 1},	/* Absolute,X */
     /* 7e */ {  "ROR",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},  /* Absolute,X */
     /* 7f */ {  ".RRA",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},
 
 	/****  Negative  ****/
 
-    /* 80 */ {  ".NOOP", IMMEDIATE, M_NONE, M_NONE, 2, 0},
+    /* 80 */ {  ".NOP", IMMEDIATE, M_NONE, M_NONE, 2, 0},
 	/* 81 */ {	"STA",	INDIRECT_X, M_AC, M_INDX,  6, 0},	/* (Indirect,X) */
-    /* 82 */ {  ".NOOP", IMMEDIATE, M_NONE, M_NONE,  2, 0},
+    /* 82 */ {  ".NOP", IMMEDIATE, M_NONE, M_NONE,  2, 0},
     /* 83 */ {  ".SAX",  INDIRECT_X, M_ANXR, M_INDX, 6, 0},
 
 	/* 84 */ {	"STY",	ZERO_PAGE, M_YR, M_ZERO,  3, 0},	/* Zeropage */
@@ -290,7 +290,7 @@ struct lookup_tag lookup[] = {
     /* 87 */ {  ".SAX",  ZERO_PAGE, M_ANXR, M_ZERO, 3, 0},
 
 	/* 88 */ {	"DEY",	IMPLIED, M_YR, M_YR, 2, 0},
-    /* 89 */ {  ".NOOP", IMMEDIATE, M_NONE, M_NONE, 2, 0},
+    /* 89 */ {  ".NOP", IMMEDIATE, M_NONE, M_NONE, 2, 0},
 	/* 8a */ {	"TXA",	IMPLIED, M_XR, M_AC, 2, 0},
 	/****  very abnormal: usually AC = AC | #$EE & XR & #$oper  ****/
     /* 8b */ {  ".ANE",  IMMEDIATE, M_AXIM, M_AC, 2, 0},
@@ -363,7 +363,7 @@ struct lookup_tag lookup[] = {
 
 	/* c0 */ {	"CPY",	IMMEDIATE, M_IMM, M_NONE, 2, 0},	/* Immediate */
 	/* c1 */ {	"CMP",	INDIRECT_X, M_INDX, M_NONE, 6, 0},	/* (Indirect,X) */
-    /* c2 */ {  ".NOOP", IMMEDIATE, M_NONE, M_NONE, 2, 0},   /* occasional TILT */
+    /* c2 */ {  ".NOP", IMMEDIATE, M_NONE, M_NONE, 2, 0},   /* occasional TILT */
     /* c3 */ {  ".DCP",  INDIRECT_X, M_INDX, M_INDX, 8, 0},
 
 	/* c4 */ {	"CPY",	ZERO_PAGE, M_ZERO, M_NONE, 3, 0},	/* Zeropage */
@@ -386,24 +386,24 @@ struct lookup_tag lookup[] = {
     /* d2 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE,    0, 0},  /* TILT */
     /* d3 */ {  ".DCP",  INDIRECT_Y, M_INDY, M_INDY, 8, 0},
 
-    /* d4 */ {  ".NOOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
+    /* d4 */ {  ".NOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
 	/* d5 */ {	"CMP",	ZERO_PAGE_X, M_ZERX, M_NONE, 4, 0},/* Zeropage,X */
 	/* d6 */ {	"DEC",	ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},/* Zeropage,X */
     /* d7 */ {  ".DCP",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},
 
 	/* d8 */ {	"CLD",	IMPLIED, M_NONE, M_FD, 2, 0},
 	/* d9 */ {	"CMP",	ABSOLUTE_Y, M_ABSY, M_NONE, 4, 1},	/* Absolute,Y */
-    /* da */ {  ".NOOP", IMPLIED, M_NONE, M_NONE,    2, 0},
+    /* da */ {  ".NOP", IMPLIED, M_NONE, M_NONE,    2, 0},
     /* db */ {  ".DCP",  ABSOLUTE_Y, M_ABSY, M_ABSY, 7, 0},
 
-    /* dc */ {  ".NOOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
+    /* dc */ {  ".NOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
 	/* dd */ {	"CMP",	ABSOLUTE_X, M_ABSX, M_NONE, 4, 1},	/* Absolute,X */
 	/* de */ {	"DEC",	ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},	/* Absolute,X */
     /* df */ {  ".DCP",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},
 
 	/* e0 */ {	"CPX",	IMMEDIATE, M_IMM, M_NONE, 2, 0},	/* Immediate */
 	/* e1 */ {	"SBC",	INDIRECT_X, M_INDX, M_AC, 6, 0},	/* (Indirect,X) */
-    /* e2 */ {  ".NOOP", IMMEDIATE, M_NONE, M_NONE,  2, 0},
+    /* e2 */ {  ".NOP", IMMEDIATE, M_NONE, M_NONE,  2, 0},
     /* e3 */ {  ".ISB",  INDIRECT_X, M_INDX, M_INDX, 8, 0},
 
 	/* e4 */ {	"CPX",	ZERO_PAGE, M_ZERO, M_NONE, 3, 0},	/* Zeropage */
@@ -426,17 +426,17 @@ struct lookup_tag lookup[] = {
     /* f2 */ {  ".JAM",  IMPLIED, M_NONE, M_NONE,  0, 0}, /* TILT */
     /* f3 */ {  ".ISB",  INDIRECT_Y, M_INDY, M_INDY, 8, 0},
 
-    /* f4 */ {  ".NOOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
+    /* f4 */ {  ".NOP", ZERO_PAGE_X, M_NONE, M_NONE, 4, 0},
 	/* f5 */ {	"SBC",	ZERO_PAGE_X, M_ZERX, M_AC,   4, 0}, /* Zeropage,X */
 	/* f6 */ {	"INC",	ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0}, /* Zeropage,X */
     /* f7 */ {  ".ISB",  ZERO_PAGE_X, M_ZERX, M_ZERX, 6, 0},
 
 	/* f8 */ {	"SED",	IMPLIED, M_NONE, M_FD,    2, 0},
 	/* f9 */ {	"SBC",	ABSOLUTE_Y, M_ABSY, M_AC, 4, 1}, /* Absolute,Y */
-    /* fa */ {  ".NOOP", IMPLIED, M_NONE, M_NONE,  2, 0},
+    /* fa */ {  ".NOP", IMPLIED, M_NONE, M_NONE,  2, 0},
     /* fb */ {  ".ISB",  ABSOLUTE_Y, M_ABSY, M_ABSY, 7, 0},
 
-    /* fc */ {  ".NOOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
+    /* fc */ {  ".NOP", ABSOLUTE_X, M_NONE, M_NONE, 4, 1},
 	/* fd */ {	"SBC",	ABSOLUTE_X, M_ABSX, M_AC,   4, 1},	/* Absolute,X */
     /* fe */ {  "INC",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0},  /* Absolute,X */
     /* ff */ {  ".ISB",  ABSOLUTE_X, M_ABSX, M_ABSX, 7, 0}

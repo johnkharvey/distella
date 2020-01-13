@@ -69,7 +69,7 @@ char orgmnc[16],linebuff[80],nextline[80];
 FILE *cfg;
 
 unsigned long pc,pcbeg,pcend,offset,brk_adr,start_adr,isr_adr,k;
-int aflag,cflag,dflag,fflag,pflag,rflag,sflag,intflag,a78flag,bflag,kflag,lineno,charcnt,hdr_exists;
+int aflag,cflag,dflag,fflag,pflag,rflag,hflag,sflag,intflag,a78flag,bflag,kflag,lineno,charcnt,hdr_exists;
 
 struct qnode *addressq;
 
@@ -85,7 +85,7 @@ int mark(unsigned long,int);
 unsigned int filesize(FILE *stream);
 int file_load(char[]);
 
-void main(int argc,char *argv[])
+int main(int argc,char *argv[])
 {
     int c,i,j;
     char file[50],config[50], parms[132];
@@ -110,6 +110,7 @@ void main(int argc,char *argv[])
     kflag = 0;
     pflag = 0;
     sflag = 0;
+    hflag = 0;
     rflag = 0;
     dflag = 1;
     a78flag = 0;
@@ -160,6 +161,9 @@ void main(int argc,char *argv[])
             case 'p':
                 pflag = 1;
                 break;
+            case 'h':
+                hflag = 1;
+                break;
             case 's':
                 sflag = 1;
                 break;
@@ -183,12 +187,11 @@ void main(int argc,char *argv[])
                 break;
             default:
                 fprintf(stderr,"DiStella: illegal option %c\n",c);
-                exit(1);
+                return 1;
             }
-    strcpy(file,*++argv);
 
     if (argc != 1) {
-        fprintf(stderr,"DiStella v3.00 - February 8, 2003\n");
+        fprintf(stderr,"DiStella v%s - %s\n", APP_VERSION, APP_COMPILE);
         fprintf(stderr,"\nUse: DiStella [options] file\n");
         fprintf(stderr," options:\n");
         fprintf(stderr,"   -7  Use Atari 7800 MARIA equates and file sizes\n");
@@ -208,13 +211,15 @@ void main(int argc,char *argv[])
         fprintf(stderr,"\n Example: DiStella -pafs pacman.bin > pacman.s\n");
         fprintf(stderr," Example: DiStella -paf7ikscball.cfg ballblaz.bin > ballblaz.asm\n");
         fprintf(stderr,"\n Email: rcolbert@novia.net or dboris@comcast.net\n");
-        fprintf(stderr,"          Version 3.0 updates, email jkharvey@voyager.net");
-        exit(0);
+        fprintf(stderr,"        Version 3.0 updates, email jkharvey@voyager.net\n");
+        fprintf(stderr,"        Version 3.01+ updates, email stephena@users.sf.net\n");
+        return 0;
     }
 
+    strcpy(file,*++argv);
     if (!file_load(file)) {
         fprintf(stderr,"Unable to load %s\n",file);
-        exit(0);
+        return 0;
     }
     
     /*====================================*/
@@ -223,7 +228,7 @@ void main(int argc,char *argv[])
     if (labels == NULL)
     {
        fprintf (stderr, "Malloc failed for 'labels' variable\n");
-       exit(1);
+       return 1;
     }
     memset(labels,0,app_data.length);
     /*====================================*/
@@ -358,7 +363,7 @@ void main(int argc,char *argv[])
 
     if (cflag && !load_config(config)) {
         fprintf(stderr,"Unable to load config file %s\n",config);
-        exit(0);
+        return 0;
     }
 
     fprintf(stderr,"PASS 1\n");
@@ -418,7 +423,7 @@ void main(int argc,char *argv[])
     time(&currtime);
     printf("; Disassembly of %s\n",file);
     printf("; Disassembled %s",ctime(&currtime));
-    printf("; Using DiStella v3.0\n;\n");
+    printf("; Using DiStella v%s\n;\n", APP_VERSION);
     printf("; Command Line: %s\n;\n",parms);
     if (cflag) {
         printf("; %s contents:\n;\n",config);
@@ -502,8 +507,8 @@ void main(int argc,char *argv[])
     strcpy(nextline,"");
     disasm(offset,3);
 
-        free(labels); /* Free dynamic memory before program ends */
-	free(mem); /* Free dynamic memory before program ends */
+    free(labels); /* Free dynamic memory before program ends */
+    free(mem); /* Free dynamic memory before program ends */
 }
 
 unsigned int filesize(FILE *stream)
@@ -746,10 +751,14 @@ void disasm(unsigned long distart,int pass)
 	unsigned long ad;
 	short amode;
     int i,bytes,labfound,addbranch;
+    int arg1, arg2, argaddr;
+
 
 /*    pc=app_data.start; */
     pc=distart-offset;
 	while(pc <= app_data.end) {
+        argaddr=pc+offset;
+        arg1=-1;arg2=-1;
         if(pass == 3) {
           if (pc+offset == start_adr)
             printf("\nSTART:\n");
@@ -924,6 +933,8 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ABSOLUTE: {
                     ad=read_adr();
+                    arg1=ad&255;
+                    arg2=ad/256;
                     labfound = mark(ad,REFERENCED);
                     if (pass == 1) {
                         if ((addbranch) && !check_bit(labels[ad & app_data.end],REACHABLE)) {
@@ -969,6 +980,7 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ZERO_PAGE: {
                     d1=mem[pc++];
+                    arg1=d1;
                     labfound = mark(d1,REFERENCED);
                         if (pass == 3)
                         if (labfound == 2) {
@@ -985,6 +997,7 @@ void disasm(unsigned long distart,int pass)
                 }
                 case IMMEDIATE: {
                     d1=mem[pc++];
+                    arg1=d1;
                     if (pass == 3) {
                         sprintf(linebuff,"    #$%0.2X ",d1);
                         strcat(nextline,linebuff);
@@ -993,6 +1006,8 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ABSOLUTE_X: {
                     ad=read_adr();
+                    arg1=ad&255;
+                    arg2=ad/256;
                     labfound = mark(ad,REFERENCED);
                     if (pass == 3) {
                         if (ad < 0x100 && fflag) {
@@ -1031,6 +1046,8 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ABSOLUTE_Y: {
                     ad=read_adr();
+                    arg1=ad&255;
+                    arg2=ad/256;
                     labfound = mark(ad,REFERENCED);
                     if (pass == 3) {
                         if (ad < 0x100 && fflag) {
@@ -1069,6 +1086,7 @@ void disasm(unsigned long distart,int pass)
                 }
                 case INDIRECT_X: {
                     d1=mem[pc++];
+                    arg1=d1;
                     if (pass == 3) {
                         sprintf(linebuff,"    ($%0.2X,X)",d1);
                         strcat(nextline,linebuff);
@@ -1077,6 +1095,7 @@ void disasm(unsigned long distart,int pass)
                 }
                 case INDIRECT_Y: {
                     d1=mem[pc++];
+                    arg1=d1;
                     if (pass == 3) {
                         sprintf(linebuff,"    ($%0.2X),Y",d1);
                         strcat(nextline,linebuff);
@@ -1085,6 +1104,7 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ZERO_PAGE_X: {
                     d1=mem[pc++];
+                    arg1=d1;
                     labfound = mark(d1,REFERENCED);
                     if (pass == 3)
                         if (labfound == 2) {
@@ -1102,6 +1122,7 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ZERO_PAGE_Y: {
                     d1=mem[pc++];
+                    arg1=d1;
                     labfound = mark(d1,REFERENCED);
                     if (pass == 3)
                         if (labfound == 2) {
@@ -1119,23 +1140,30 @@ void disasm(unsigned long distart,int pass)
                 }
                 case RELATIVE:
                 {
+                    /* SA - 04-06-2010: there seemed to be a bug here, where
+                       wraparound occurred on a 32-bit int, and subsequent
+                       indexing into the labels array caused a crash
+                     */
                     d1=mem[pc++];
-                    ad=d1;
-                    if (d1 >= 128) ad=d1-256;
-                    labfound = mark(pc+ad+offset,REFERENCED);
+                    arg1=d1;
+                    if (a78flag==0)
+                        ad = ((pc + (signed char)d1) & 0xfff) + offset;
+                    else
+                        ad = ((pc + (signed char)d1) & 0xffff) + offset;
+                    labfound = mark(ad,REFERENCED);
                     if (pass == 1) {
-                        if ((addbranch) && !check_bit(labels[pc+ad],REACHABLE)) {
-                            addressq=addq(addressq,pc+ad+offset);
-                            mark(pc+ad+offset,REACHABLE);
+                        if ((addbranch) && !check_bit(labels[ad-offset],REACHABLE)) {
+                            addressq=addq(addressq,ad);
+                            mark(ad,REACHABLE);
                      /*       addressq=addq(addressq,pc+offset); */
                         }
                     } else if (pass == 3)
                         if (labfound == 1) {
-                            sprintf(linebuff,"    L%0.4X",pc+ad+offset);
+                            sprintf(linebuff,"    L%0.4X",ad);
                             strcat(nextline,linebuff);
                         }
                         else {
-                            sprintf(linebuff,"    $%0.4X",pc+ad+offset);
+                            sprintf(linebuff,"    $%0.4X",ad);
                             strcat(nextline,linebuff);
                         }
 
@@ -1143,6 +1171,8 @@ void disasm(unsigned long distart,int pass)
                 }
                 case ABS_INDIRECT: {
                     ad=read_adr();
+                    arg1=ad&255;
+                    arg2=ad/256;
                     labfound = mark(ad,REFERENCED);
                     if (pass == 3)
                         if (ad < 0x100 && fflag) {
@@ -1193,6 +1223,15 @@ void disasm(unsigned long distart,int pass)
                 }
                 if (sflag)
                     printf(";%d",lookup[op].cycles);
+                if (hflag)
+		{
+                    printf("; %0.4X ",argaddr);
+                    printf("%0.2X ",op);
+                    if(arg1>=0)
+                      printf("%0.2X ",arg1);
+                    if(arg2>=0)
+                      printf("%0.2X ",arg2);
+		}
                 printf("\n");
                 if (op == 0x40 || op == 0x60)
                     printf("\n");

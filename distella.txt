@@ -1,7 +1,7 @@
 
                                D i S t e l l a
 
-                                   v 3.00
+                                   v 3.01a
 
                                  Created By
 
@@ -18,6 +18,20 @@
 ----------------------------------------------------------------------------
 
 Quick Docs:  Type DiStella at the command prompt.
+
+
+Differences from version 3.00:
+
+ Bugs fixed:
+   - Crash in Linux/OSX when launching without a ROM file.
+   - Compile errors in Linux/OSX from a stray illegal character in
+     queue.c, and uppercase/lowercase filenames.
+   - Crash under certain circumstances when processing RELATIVE addressing.
+
+ This release includes builds for Linux, OSX and Windows, which should
+ run on 32-bit and 64-bit machines.
+
+ Also included is a cross-platform Makefile (using gcc/make).
 
 
 Differences from version 2.10:
@@ -176,7 +190,7 @@ Command format:
 Options:
 
   -7 -> Allows for MARIA equates and MARIA I/O equates tables to be loaded
-	instead of the Atari 2600 VCS Equates and 2600 VCS I/O tables.
+        instead of the Atari 2600 VCS Equates and 2600 VCS I/O tables.
         Also, with this option, supported 7800 file sizes can be 16K, 32K,
         and 48K (or 128 bytes greater for each size, if a correct 7800
         header is appended at the front, which are a78 formatted files).
@@ -405,16 +419,18 @@ code for data and visa-versa.
 
 That's it!  Have fun, and report all bugs and errors to:
 
-   Bob Colbert    - rcolbert@novia.net
-                    http://www.atari2600collector.com
+   Bob Colbert     - rcolbert@novia.net
+                     http://www.atari2600collector.com
 
-   Dan Boris      - dboris@comcast.net
-                    http://www.atarihq.com/danb
+   Dan Boris       - dboris@comcast.net
+                     http://www.atarihq.com/danb
 
 For version 3.0 and Atari 7800-related errors, contact:
 
-   John K. Harvey - jkharvey@voyager.net
-                    http://www.cs.wisc.edu/~harvey/7800/
+   John K. Harvey  - jkharvey@voyager.net
+                     http://www.cs.wisc.edu/~harvey/7800/
 
+For version 3.01 errors, contact:
 
-
+   Stephen Anthony - stephena@users.sf.net
+                     http://minbar.org
