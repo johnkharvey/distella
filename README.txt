@@ -19,7 +19,7 @@
 
 Quick Docs:  Type DiStella at the command prompt.
 
-Differences from version 3.01b:
+Differences from version 3.01a:
  Bugs fixed:
    -Crash when ABS_INDIRECT was encountered in some ROMs.
    -Labels were incorrectly wrapped 2600 style on 7800 ROMs, at 0x0fff.
@@ -431,7 +431,7 @@ That's it!  Have fun, and report all bugs and errors to:
 
 For version 3.0 and Atari 7800-related errors, contact:
 
-   John K. Harvey  - jkharvey@voyager.net
+   John K. Harvey  - johnkharvey@gmail.com
                      http://www.cs.wisc.edu/~harvey/7800/
 
 For version 3.01 errors, contact:
