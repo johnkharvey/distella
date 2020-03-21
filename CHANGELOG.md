@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
  - General cleanup and more modern/github-friendly formatting
 
-## [3.0.1b] - August 26, 2016
+## [3.0.1b](https://github.com/johnkharvey/distella/releases/tag/3.01b) - August 26, 2016
 
 ### Bugs fixed
 
@@ -17,9 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Original Release Announcement
 
- -  https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/page/2/?tab=comments#comment-3580588
+ -  [https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/page/2/?tab=comments#comment-3580588](https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/page/2/?tab=comments#comment-3580588)
 
-## [3.01a] - August 14, 2016 release
+## [3.01a](https://github.com/johnkharvey/distella/releases/tag/3.01a) - August 14, 2016 release
 
 ### Bugs fixed
 
@@ -34,9 +34,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Original Release Announcement
 
- - https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/?tab=comments#comment-3571430
+ - [https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/?tab=comments#comment-3571430](https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/?tab=comments#comment-3571430)
 
-## [3.0] - April 22, 2003
+## [3.0](https://github.com/johnkharvey/distella/releases/tag/3.0) - April 22, 2003
 
 ### Bugs fixed
 
@@ -145,7 +145,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
  - [https://atariage.com/forums/topic/24981-distella-30-released/](https://atariage.com/forums/topic/24981-distella-30-released)
 
-## [2.10] - February 25, 1997
+## [2.10](https://github.com/johnkharvey/distella/releases/tag/2.10) - February 25, 1997
 
 ### New Features
 
