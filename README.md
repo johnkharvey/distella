@@ -30,7 +30,7 @@
 
  * `-a` Disables the printing of the letter 'A' for opcodes in which the A register is implied.  Some assemblers don't like the 'A' and others require it.
 
-  Example:  `LSL A`  would be just `LSL`
+    Example:  `LSL A`  would be just `LSL`
     
  * `-b` DiStella will read the address indicated in the last 2 bytes of the ROM file - the `BRK` vector - and trace through it to help determine data areas.  Not all programs use the `BRK` vector.  The best thing to do is try disassembling the image without this flag and see if the last two bytes point to an area that is not disassembled.  If that is the case, try the flag and see if the interrupt routine contains valid code.  It should be noted that a majority of games do not use the interrupt.  This is true for both Atari 2600 games and Atari 7800 games.
 
@@ -54,13 +54,13 @@
               rts
         LF004 .byte $3c
 
-  If this flag IS used, the same code would look like this:
+    If this flag IS used, the same code would look like this:
 
         LF000 lda LF004 ; ahh! This is a little clearer :)
               rts
         LF004 .byte $3c
 
-  It is important to note that if the -r flag is used, the code will recompile fine, but the ROM image will be altered.  If you want your source to recompile into an exact copy of the original ROM image, do not use this flag!
+    It is important to note that if the -r flag is used, the code will recompile fine, but the ROM image will be altered.  If you want your source to recompile into an exact copy of the original ROM image, do not use this flag!
 
  * `-s` Includes the cycle count for each instruction.  It only includes the basic cycle count, and does not adjust for page boundries (YET).
 
