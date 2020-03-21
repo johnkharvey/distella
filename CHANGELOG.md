@@ -159,7 +159,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Historical Notes
 
  - The 2.10 development page can be found here:
-  - [https://web.archive.org/web/20010607091214/http://members.home.com/rcolbert1/distella.htm](https://web.archive.org/web/20010607091214/http://members.home.com/rcolbert1/distella.htm)
+
+   - [https://web.archive.org/web/20010607091214/http://members.home.com/rcolbert1/distella.htm](https://web.archive.org/web/20010607091214/http://members.home.com/rcolbert1/distella.htm)
+
  - The 2.10 original code zip file with executable and source code can be found here:
-  - [https://web.archive.org/web/20010614162046/http://members.home.com/rcolbert1/zip/distella.zip](https://web.archive.org/web/20010614162046/http://members.home.com/rcolbert1/zip/distella.zip)
+
+   - [https://web.archive.org/web/20010614162046/http://members.home.com/rcolbert1/zip/distella.zip](https://web.archive.org/web/20010614162046/http://members.home.com/rcolbert1/zip/distella.zip)
 
