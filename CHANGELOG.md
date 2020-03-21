@@ -108,9 +108,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
  - For some ROM files, if the code is doing something unconventional (like a `BRK` that never has a corresponding `RTI` (i.e. because of manual stack manipulation), then it's possible to accidentally start disassembling segments that contain data or graphics instead of code (this is covered in more detail at the end of README.txt, in the "Limitations" section).
 
-  In these situations, it's possible that a range of addresses that reaches to the end of a file could be marked for disassembly.  In these cases, the bug was that this range of addresses would not be disassembled appropriately.  At most, the first and last instruction in the segment would be disassembled, missing all of the code in-between.  So, a fix is in place to handle this.
+   In these situations, it's possible that a range of addresses that reaches to the end of a file could be marked for disassembly.  In these cases, the bug was that this range of addresses would not be disassembled appropriately.  At most, the first and last instruction in the segment would be disassembled, missing all of the code in-between.  So, a fix is in place to handle this.
   
-  ROM files affected by this are:
+   ROM files affected by this are:
+
     1. Alien's Return
     1. Bachelorette Party
     1. Col 'N' (HomeVision)
@@ -120,13 +121,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
     1. Lady in Wading
     1. Lost Luggage
 
-  Also, as a subset of this problem, the last byte (or 2) of the code in these situations will be disassembled as code.  Normally this is ok, but if these particular bytes are translated to multi-byte instructions ( like a `"BMI"`, for example), there is a problem.  In these instances, a second byte (and possibly a third) byte is created to complete the multi-byte instruction.
+   Also, as a subset of this problem, the last byte (or 2) of the code in these situations will be disassembled as code.  Normally this is ok, but if these particular bytes are translated to multi-byte instructions ( like a `"BMI"`, for example), there is a problem.  In these instances, a second byte (and possibly a third) byte is created to complete the multi-byte instruction.
 
-  For now, this byte (or bytes) is believed to be made up from a random number.  This unfortunately causes any recompiles to make the end file size become a byte or two greater than it was when it was disassembled.  It also can cause distella to think that another piece of code is referenced, and it could even try to disassemble code at that address (i.e. in a graphics data area)!
+   For now, this byte (or bytes) is believed to be made up from a random number.  This unfortunately causes any recompiles to make the end file size become a byte or two greater than it was when it was disassembled.  It also can cause distella to think that another piece of code is referenced, and it could even try to disassemble code at that address (i.e. in a graphics data area)!
 
-  This problem has the potential to affect games where the second-last byte is translated to a 3-byte instruction, or where the last byte is translated to a 2- or 3-byte instruction.
+   This problem has the potential to affect games where the second-last byte is translated to a 3-byte instruction, or where the last byte is translated to a 2- or 3-byte instruction.
 
-  Known ROMs affected:
+   Known ROMs affected:
        
     1. Bachelorette Party
     1. Homerun
