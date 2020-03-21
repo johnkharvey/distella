@@ -6,6 +6,10 @@
 #include "maria.c"
 #include <time.h>
 #include "queue.c"
+#include "stdbool.h"
+
+// Change this flag to true if you need to compile with debug output on
+bool debug=true;
 
 #define IMPLIED		0
 #define ACCUMULATOR	1
@@ -211,7 +215,7 @@ int main(int argc,char *argv[])
         fprintf(stderr,"\n Example: DiStella -pafs pacman.bin > pacman.s\n");
         fprintf(stderr," Example: DiStella -paf7ikscball.cfg ballblaz.bin > ballblaz.asm\n");
         fprintf(stderr,"\n Email: rcolbert@novia.net or dboris@comcast.net\n");
-        fprintf(stderr,"        Version 3.0 updates, email jkharvey@voyager.net\n");
+        fprintf(stderr,"        Version 3.0 updates, email johnkharvey@gmail.com\n");
         fprintf(stderr,"        Version 3.01+ updates, email stephena@users.sf.net\n");
         return 0;
     }
@@ -224,7 +228,10 @@ int main(int argc,char *argv[])
     
     /*====================================*/
     /* Allocate memory for "labels" variable */
-    labels=(BYTE *)malloc(app_data.length);
+    if (debug) {
+        fprintf(stderr,"[DEBUG] Allocating labels array of size: %d\n", app_data.length);
+    }
+    labels=(BYTE *)malloc(app_data.length+1);
     if (labels == NULL)
     {
        fprintf (stderr, "Malloc failed for 'labels' variable\n");
@@ -359,6 +366,10 @@ int main(int argc,char *argv[])
            not practical.
         -----------------------------------------------------*/
         kflag = 0;
+    }
+
+    if (debug) {
+        fprintf(stderr,"[DEBUG] Offset: \$%04X\n", offset);
     }
 
     if (cflag && !load_config(config)) {
@@ -748,15 +759,19 @@ void disasm(unsigned long distart,int pass)
 {
     BYTE op;
     BYTE d1,opsrc;
-	unsigned long ad;
-	short amode;
+    unsigned long ad;
+    short amode;
     int i,bytes,labfound,addbranch;
     int arg1, arg2, argaddr;
 
-
 /*    pc=app_data.start; */
     pc=distart-offset;
-	while(pc <= app_data.end) {
+    while(pc <= app_data.end) {
+
+        if (debug) {
+            fprintf(stderr,"[DEBUG] PC: \$%04X\n", pc);
+        }
+
         argaddr=pc+offset;
         arg1=-1;arg2=-1;
         if(pass == 3) {
@@ -767,6 +782,7 @@ void disasm(unsigned long distart,int pass)
           if ((pc+offset == isr_adr) && ((a78flag == 1) && (intflag == 1)))
             printf("\nINTERRUPT_ROUTINE:\n");
         }
+        
         if(check_bit(labels[pc],GFX)) {
 /*         && !check_bit(labels[pc],REACHABLE)) { */
             if (pass == 2)
@@ -791,6 +807,9 @@ void disasm(unsigned long distart,int pass)
                 printf("$%0.2X",mem[pc]);
             }
             pc++;
+            //fprintf(stderr,"[DEBUG] 1b1.0\n");
+            //fprintf(stderr,"Your string: %b\n", labels[pc]);
+            //fprintf(stderr,"[DEBUG] 1b1.1\n");
 
             while (check_bit(labels[pc],DATA) && !check_bit(labels[pc],REFERENCED)
                    && !check_bit(labels[pc],GFX) && pass == 3 && pc <= app_data.end) {
@@ -957,10 +976,10 @@ void disasm(unsigned long distart,int pass)
                             strcat(nextline,linebuff);
                         }
                         else if (labfound == 3) {
-			    if (a78flag == 0)
-                        	sprintf(linebuff,"%s",ioregs[ad-0x280]);
-			    else
-                        	sprintf(linebuff,"%s",mariaio[ad-0x280]);
+                            if (a78flag == 0)
+                                sprintf(linebuff,"%s",ioregs[ad-0x280]);
+                            else
+                                sprintf(linebuff,"%s",mariaio[ad-0x280]);
                             strcat(nextline,linebuff);
                         }
                         else if (labfound == 5) {
@@ -984,10 +1003,10 @@ void disasm(unsigned long distart,int pass)
                     labfound = mark(d1,REFERENCED);
                         if (pass == 3)
                         if (labfound == 2) {
-			    if (a78flag == 0)
-                        	sprintf(linebuff,"    %s",stella[d1]);
-			    else
-                        	sprintf(linebuff,"    %s",maria[d1]);
+                            if (a78flag == 0)
+                                sprintf(linebuff,"    %s",stella[d1]);
+                            else
+                                sprintf(linebuff,"    %s",maria[d1]);
                             strcat(nextline,linebuff);
                         } else {
                              sprintf(linebuff,"    $%0.2X ",d1);
@@ -1023,9 +1042,9 @@ void disasm(unsigned long distart,int pass)
                             strcat(nextline,linebuff);
                         }
                         else if (labfound == 3) {
-			    if (a78flag == 0)
+                            if (a78flag == 0)
                                 sprintf(linebuff,"%s,X",ioregs[ad-0x280]);
-			    else
+                            else
                                 sprintf(linebuff,"%s,X",mariaio[ad-0x280]);
                             strcat(nextline,linebuff);
                         }
@@ -1063,9 +1082,9 @@ void disasm(unsigned long distart,int pass)
                             strcat(nextline,linebuff);
                         }
                         else if (labfound == 3) {
-			    if (a78flag == 0)
+                            if (a78flag == 0)
                                 sprintf(linebuff,"%s,Y",ioregs[ad-0x280]);
-			    else
+                            else
                                 sprintf(linebuff,"%s,Y",mariaio[ad-0x280]);
                             strcat(nextline,linebuff);
                         }
@@ -1108,9 +1127,9 @@ void disasm(unsigned long distart,int pass)
                     labfound = mark(d1,REFERENCED);
                     if (pass == 3)
                         if (labfound == 2) {
-			    if (a78flag == 0)
+                            if (a78flag == 0)
                                 sprintf(linebuff,"    %s,X",stella[d1]);
-			    else
+                            else
                                 sprintf(linebuff,"    %s,X",maria[d1]);
                             strcat(nextline,linebuff);
                         }
@@ -1126,9 +1145,9 @@ void disasm(unsigned long distart,int pass)
                     labfound = mark(d1,REFERENCED);
                     if (pass == 3)
                         if (labfound == 2) {
-			    if (a78flag == 0)
+                            if (a78flag == 0)
                                 sprintf(linebuff,"    %s,Y",stella[d1]);
-			    else
+                            else
                                 sprintf(linebuff,"    %s,Y",maria[d1]);
                             strcat(nextline,linebuff);
                         }
@@ -1188,9 +1207,9 @@ void disasm(unsigned long distart,int pass)
                             strcat(nextline,linebuff); // REVENG: was overflowing "nextline" on PASS 1, with at least one rom. Added parenthesis to limit this block to PASS 3, which seemed to be the intent if the indentation is any indication.
                         }
                         else if (labfound == 3) {
-			    if (a78flag == 0)
+                            if (a78flag == 0)
                                 sprintf(linebuff,"(%s)",ioregs[ad-0x280]);
-			    else
+                            else
                                 sprintf(linebuff,"(%s)",mariaio[ad-0x280]);
                             strcat(nextline,linebuff);
                         }
@@ -1216,7 +1235,7 @@ void disasm(unsigned long distart,int pass)
                     }
             } else if (pass == 3) {
                 printf("%s",nextline);
-		if (strlen(nextline) <= 15)
+                if (strlen(nextline) <= 15)
                 {
                     /* Print spaces to allign cycle count data */
                     for (charcnt=0;charcnt<15-strlen(nextline);charcnt++)
@@ -1225,20 +1244,21 @@ void disasm(unsigned long distart,int pass)
                 if (sflag)
                     printf(";%d",lookup[op].cycles);
                 if (hflag)
-		{
+                {
                     printf("; %0.4X ",argaddr);
                     printf("%0.2X ",op);
                     if(arg1>=0)
                       printf("%0.2X ",arg1);
                     if(arg2>=0)
                       printf("%0.2X ",arg2);
-		}
+                }
                 printf("\n");
                 if (op == 0x40 || op == 0x60)
                     printf("\n");
                 strcpy(nextline,"");
             }
         }
+
     }    /* while loop */
     /* Just in case we are disassembling outside of the address range, force the pcend to EOF */
     pcend = app_data.end + offset;
