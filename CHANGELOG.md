@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
  -  [https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/page/2/?tab=comments#comment-3580588](https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/page/2/?tab=comments#comment-3580588)
 
-## [3.01a](https://github.com/johnkharvey/distella/releases/tag/3.01a) - August 14, 2016 release
+## [3.01a](https://github.com/johnkharvey/distella/releases/tag/3.01a) - August 14, 2016
 
 ### Bugs fixed
 
