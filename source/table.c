@@ -313,7 +313,7 @@ struct lookup_tag lookup[] = {
   /* 98 */ {  "TYA",   IMPLIED,      M_YR,   M_AC,   2, 0},
   /* 99 */ {  "STA",   ABSOLUTE_Y,   M_AC,   M_ABSY, 5, 0},  /* Absolute,Y */
   /* 9a */ {  "TXS",   IMPLIED,      M_XR,   M_SP,   2, 0},
-  /*** This is very mysterious comm AND ... */
+  /*** This is very mysterious command ... */
   /* 9b */ {  ".SHS",  ABSOLUTE_Y,   M_ANXR, M_STH3, 5, 0},
 
   /* 9c */ {  ".SHY",  ABSOLUTE_X,   M_YR,   M_STH2, 5, 0},
