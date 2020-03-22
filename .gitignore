@@ -1,2 +1,5 @@
 # Mac file-system file we don't need to track
 .DS_Store
+# Executables
+DiStella.EXE
+distella

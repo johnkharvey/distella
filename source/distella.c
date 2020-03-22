@@ -210,9 +210,7 @@ int main(int argc,char *argv[])
         fprintf(stderr,"   -s  Cycle count\n");
         fprintf(stderr,"\n Example: DiStella -pafs pacman.bin > pacman.s\n");
         fprintf(stderr," Example: DiStella -paf7ikscball.cfg ballblaz.bin > ballblaz.asm\n");
-        fprintf(stderr,"\n Email: rcolbert@novia.net or dboris@comcast.net\n");
-        fprintf(stderr,"        Version 3.0 updates, email jkharvey@voyager.net\n");
-        fprintf(stderr,"        Version 3.01+ updates, email stephena@users.sf.net\n");
+        fprintf(stderr,"\n Bugs: Raise issues at https://github.com/johnkharvey/distella/issues\n");
         return 0;
     }
 
