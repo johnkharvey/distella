@@ -30,11 +30,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### New Features
 
  - This release includes builds for Linux, OSX and Windows, which should run on 32-bit and 64-bit machines.
- - Also included is a cross-platform Makefile (using gcc/make).
 
 ### Original Release Announcement
 
  - [https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/?tab=comments#comment-3571430](https://atariage.com/forums/topic/255626-64-bit-assemberdisassembler-for-7800/?tab=comments#comment-3571430)
+
+## [3.01a-old] - March 4, 2013
+
+### New Features and Bugs Fixed
+
+ - The code hasn't changed from version 3.01.
+ - This new version simply adds a better build system (Makefile for various OS's).
+ - Also, the OSX build is now a fat binary containing code for PPC 32-bit, and Intel 32/64-bit.
+
+### Original Release Announcement
+
+ - [https://atariage.com/forums/topic/24015-moderated-links-for-programmers/?do=findComment&comment=2708671](https://atariage.com/forums/topic/24015-moderated-links-for-programmers/?do=findComment&comment=2708671)
+
+## [3.01] - February 28, 2013
+
+### New Features and Bugs Fixed
+
+ - This release includes compilation fixes for Linux/OSX and crashing in Linux/OSX when not specifying a filename on the commandline.
+ - Also included are builds for Linux, OSX (Intel-only) and Windows, which should also be runnable on 32 and 64-bit machines.
+
+### Original Release Announcement
+
+ - [https://atariage.com/forums/topic/24015-moderated-links-for-programmers/?do=findComment&comment=2706503](https://atariage.com/forums/topic/24015-moderated-links-for-programmers/?do=findComment&comment=2706503)
 
 ## [3.0](https://github.com/johnkharvey/distella/releases/tag/3.0) - April 22, 2003
 

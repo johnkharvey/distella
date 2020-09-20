@@ -158,7 +158,7 @@ Special thanks to all of the original maintainers of DiStella, who without their
 
 #### Original Creation (version 1.0 to 2.10):
 
- - Dan Boris and Bob Colbert
+ - Bob Colbert and Dan Boris
  - Thanks to Alex Hornby, Vesa-Matti Puro, Jarkko Sonninen, Jouko Valta
 
 #### Atari 7800 Updates (version 3.0):
@@ -169,13 +169,17 @@ Special thanks to all of the original maintainers of DiStella, who without their
 
      http://www.cs.wisc.edu/~harvey/7800/
 
-#### Further Updates and fixes (versions 3.01a and 3.01b)
+#### Further Updates and fixes (versions 3.01 and 3.01a-old)
 
  - Stephen Anthony
 
     stephena@users.sf.net
 
     http://minbar.org
+
+#### Further Updates and fixes (versions 3.01a and 3.01b)
+
+ - Mike Saarna
 
 ### Reporting Bugs
 

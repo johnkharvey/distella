@@ -1,6 +1,6 @@
 /*****************************************************************************
 
-   This file is part of Virtual VCS, the Atari 2600 Emulator
+   This file was originally part of Virtual VCS, the Atari 2600 Emulator
    ===================================================
    
    Copyright 1996 Alex Hornby. For contributions see the file CREDITS.
