@@ -1,0 +1,23 @@
+Copyright (c) 1996-2003 by Bob Colbert and Dan Boris
+Copyright (c) 2003-2016 by John K. Harvey
+Copyright (c) 2016-2019 by Stephen Anthony
+Copyright (c) 2019-2020 by the DiStella team
+
+# NOTES:
+Table.c references that it is under GPL.
+
+The file itself comes fromc "Virtual VCS" that was maintained by Dan Boris
+  https://atarihq.com/danb/a2600.shtml#devsoftware
+
+If you get that sourcecode and download it, there's a CREDITS file that says:
+ - Daniel Boris - Ported Virtual VCS from X2600
+ - Alex Hornby - Original author and maintainer.
+
+If you go deeper, you can find the original page for "X2600" here:
+https://sites.google.com/a/hornby.org.uk/alex/v2600?overridemobile=true
+
+If you go even deeper, you end up here:
+http://www.hornby.org.uk/v2600/#COPYING
+and find this note:
+
+ - Virtual 2600 is copyright Alex Hornby and others under the terms of the GNU General Public License and contains GPLed code from the Free Widget Foundation, and the X64 project ( Noteably the basis for the cpu emulation, and the X based debugger.)
